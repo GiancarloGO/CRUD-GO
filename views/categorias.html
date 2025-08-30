@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorías</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1>
+                <a href="/productos">
+                    <img src="/static/images/master_color_logo.jpg" alt="Master Color Store Logo" style="height: 30px; margin-right: 10px;">
+                    Gestión de Productos
+                </a>
+            </h1>
+            <ul class="nav-menu">
+                <li><a href="/productos">Productos</a></li>
+                <li><a href="/categorias">Categorías</a></li>
+                <li><a href="/producto/nuevo" class="btn-primary">Nuevo Producto</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <div class="categorias-section">
+            <div class="header-section">
+                <h2>Gestión de Categorías</h2>
+            </div>
+
+            <div class="form-container">
+                <h3>Nueva Categoría</h3>
+                <form method="POST" action="/categorias" onsubmit="return validarCategoria()" id="categoriaForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre de la categoría:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                        <span class="error-message" id="categoria-nombre-error"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Crear Categoría</button>
+                </form>
+            </div>
+
+            <div class="categorias-list">
+                <h3>Categorías Existentes</h3>
+                <div class="categorias-grid">
+                    {{range .}}
+                    <div class="categoria-card">
+                        <h4>{{.Nombre}}</h4>
+                        <p>ID: {{.ID}}</p>
+                        <a href="/productos?categoria={{.ID}}" class="btn btn-info">Ver Productos</a>
+                    </div>
+                    {{else}}
+                    <p>No hay categorías disponibles.</p>
+                    {{end}}
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

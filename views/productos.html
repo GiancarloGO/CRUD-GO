@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Productos</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1>
+                <a href="/productos">
+                    <img src="/static/images/master_color_logo.jpg" alt="Master Color Store Logo" style="height: 30px; margin-right: 10px;">
+                    Gestión de Productos
+                </a>
+            </h1>
+            <ul class="nav-menu">
+                <li><a href="/productos">Productos</a></li>
+                <li><a href="/categorias">Categorías</a></li>
+                <li><a href="/producto/nuevo" class="btn-primary">Nuevo Producto</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <div class="header-section">
+            <h2>Lista de Productos</h2>
+            <div class="filter-section">
+                <select id="categoriaFilter" onchange="filtrarPorCategoria()">
+                    <option value="">Todas las categorías</option>
+                    {{range .Categorias}}
+                    <option value="{{.ID}}">{{.Nombre}}</option>
+                    {{end}}
+                </select>
+            </div>
+        </div>
+
+        <div class="productos-grid">
+            {{range .Productos}}
+            <div class="producto-card">
+                <img src="{{.ImagenURL}}" alt="{{.Nombre}}" class="producto-imagen">
+                <div class="producto-info">
+                    <h3>{{.Nombre}}</h3>
+                    <p class="descripcion">{{.Descripcion}}</p>
+                    <p class="precio">S/{{printf "%.2f" .Precio}}</p>
+                    <div class="producto-actions">
+                        <a href="/producto/{{.ID}}" class="btn btn-info">Ver</a>
+                        <a href="/producto/{{.ID}}/editar" class="btn btn-warning">Editar</a>
+                        <form method="POST" action="/producto/{{.ID}}/borrar" style="display: inline;" onsubmit="return confirmarEliminacion()">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {{else}}
+            <div class="no-products">
+                <p>No hay productos disponibles.</p>
+                <a href="/producto/nuevo" class="btn btn-primary">Agregar primer producto</a>
+            </div>
+            {{end}}
+        </div>
+    </main>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
