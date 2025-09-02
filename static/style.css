@@ -497,58 +497,13 @@ body {
 .form-container {
     animation: fadeIn 0.5s ease-out;
 }
-
-/* Tema oscuro opcional */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --light-bg: #111827;
-        --text-primary: #f9fafb;
-        --text-secondary: #d1d5db;
-        --border-color: #374151;
-    }
-
-    body {
-        background-color: var(--dark-bg);
-    }
-
-    .navbar,
-    .producto-card,
-    .detalle-producto,
-    .form-container,
-    .categoria-card {
-        background-color: #1f2937;
-        border-color: var(--border-color);
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-        background-color: #374151;
-        border-color: #4b5563;
-        color: var(--text-primary);
-    }
-
-    .filter-section select {
-        background-color: #374151;
-        border-color: #4b5563;
-        color: var(--text-primary);
-    }
-}primary {
-    background-color: var(--primary-color);
-    color: white;
+.categoria-actions a:not(.btn-danger) {
+    flex: 1;
+    min-width: 90px;
+    text-align: center;
 }
 
-.btn-primary:hover {
-    background-color: #2563eb;
-    transform: translateY(-1px);
+.categoria-actions .btn-danger {
+    flex-basis: 100%;
+    margin-top: 0.5rem; /* Ajusta el espacio vertical */
 }
-
-.btn-secondary {
-    background-color: var(--secondary-color);
-    color: white;
-}
-
-.btn-secondary:hover {
-    background-color: #4b5563;
-}
-
