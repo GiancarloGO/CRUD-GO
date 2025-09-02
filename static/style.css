@@ -83,6 +83,7 @@ body {
     padding: 0 2rem;
 }
 
+
 /* Botones */
 .btn {
     display: inline-block;
@@ -110,40 +111,34 @@ body {
 
 .btn-success {
     background-color: var(--success-color);
-}
-
-.btn-warning {
-    background-color: var(--warning-color);
-}
-
-.btn-danger {
-    background-color: var(--danger-color);
-}
-
-.btn-info {
-    background-color: #06b6d4;
-}
-
-/* Hover de los botones */
-.btn:hover {
-    filter: brightness(1.1);
-}
-
-.btn-primary:hover {
-    background-color: #2563eb;
-    transform: translateY(-1px);
+    color: white;
 }
 
 .btn-success:hover {
     background-color: #059669;
 }
 
+.btn-warning {
+    background-color: var(--warning-color);
+    color: white;
+}
+
 .btn-warning:hover {
     background-color: #d97706;
 }
 
+.btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
 .btn-danger:hover {
     background-color: #dc2626;
+}
+
+.btn-info {
+    background-color: #06b6d4;
+    color: white;
 }
 
 .btn-info:hover {
