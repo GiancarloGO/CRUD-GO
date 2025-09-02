@@ -83,7 +83,6 @@ body {
     padding: 0 2rem;
 }
 
-
 /* Botones */
 .btn {
     display: inline-block;
@@ -96,38 +95,55 @@ body {
     cursor: pointer;
     transition: all 0.2s;
     text-align: center;
+    white-space: nowrap;
+    color: white; /* Añadido para asegurar que el texto siempre sea blanco en los botones */
+}
+
+/* Colores de los botones */
+.btn-primary {
+    background-color: var(--primary-color);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
 }
 
 .btn-success {
     background-color: var(--success-color);
-    color: white;
+}
+
+.btn-warning {
+    background-color: var(--warning-color);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+}
+
+.btn-info {
+    background-color: #06b6d4;
+}
+
+/* Hover de los botones */
+.btn:hover {
+    filter: brightness(1.1);
+}
+
+.btn-primary:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
 }
 
 .btn-success:hover {
     background-color: #059669;
 }
 
-.btn-warning {
-    background-color: var(--warning-color);
-    color: white;
-}
-
 .btn-warning:hover {
     background-color: #d97706;
 }
 
-.btn-danger {
-    background-color: var(--danger-color);
-    color: white;
-}
-
 .btn-danger:hover {
     background-color: #dc2626;
-}
-
-.btn-info {
-    background-color: #06b6d4;
-    color: white;
 }
 
 .btn-info:hover {
