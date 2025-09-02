@@ -17,6 +17,7 @@ func (cc *CategoriaController) init() {
 	}
 }
 
+// Listado de categorías
 func (cc *CategoriaController) Index(w http.ResponseWriter, r *http.Request) {
 	cc.init()
 
@@ -27,6 +28,7 @@ func (cc *CategoriaController) Index(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// Crear categoría
 func (cc *CategoriaController) Create(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
 	if err != nil {
@@ -42,6 +44,40 @@ func (cc *CategoriaController) Create(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/categorias", http.StatusSeeOther)
 }
 
+// Mostrar formulario de edición
+func (cc *CategoriaController) Edit(w http.ResponseWriter, r *http.Request, id int) {
+	cc.init()
+
+	categoria, _ := models.CategoriaRepo.GetByID(id)
+	err := cc.templates.ExecuteTemplate(w, "editar_categoria.html", categoria)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
+
+// Actualizar categoría
+func (cc *CategoriaController) Update(w http.ResponseWriter, r *http.Request, id int) {
+	err := r.ParseForm()
+	if err != nil {
+		http.Error(w, "Error al parsear formulario", http.StatusBadRequest)
+		return
+	}
+
+	categoria := models.Categoria{
+		Nombre: r.FormValue("nombre"),
+	}
+
+	models.CategoriaRepo.Update(id, categoria)
+	http.Redirect(w, r, "/categorias", http.StatusSeeOther)
+}
+
+// Eliminar categoría
+func (cc *CategoriaController) Delete(w http.ResponseWriter, r *http.Request, id int) {
+	models.CategoriaRepo.Delete(id)
+	http.Redirect(w, r, "/categorias", http.StatusSeeOther)
+}
+
+// Manejo general de categorías (listar / crear)
 func (cc *CategoriaController) HandleRoutes(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
 		cc.Index(w, r)
@@ -50,6 +86,7 @@ func (cc *CategoriaController) HandleRoutes(w http.ResponseWriter, r *http.Reque
 	}
 }
 
+// API (JSON)
 func (cc *CategoriaController) APIIndex(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	categorias := models.CategoriaRepo.GetAll()

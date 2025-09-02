@@ -18,7 +18,7 @@
             <ul class="nav-menu">
                 <li><a href="/productos">Productos</a></li>
                 <li><a href="/categorias">Categorías</a></li>
-                <li><a href="/producto/nuevo" class="btn-primary">Nuevo Producto</a></li>
+                <li><a href="/producto/nuevo">Nuevo Producto</a></li>
             </ul>
         </div>
     </nav>
@@ -29,17 +29,20 @@
                 <h2>Gestión de Categorías</h2>
             </div>
 
-            <div class="form-container">
-                <h3>Nueva Categoría</h3>
-                <form method="POST" action="/categorias" onsubmit="return validarCategoria()" id="categoriaForm">
-                    <div class="form-group">
-                        <label for="nombre">Nombre de la categoría:</label>
-                        <input type="text" id="nombre" name="nombre" required>
-                        <span class="error-message" id="categoria-nombre-error"></span>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Crear Categoría</button>
-                </form>
-            </div>
+          <div class="form-container">
+    <h3>Nueva Categoría</h3>
+    <form method="POST" action="/categorias" onsubmit="return validarCategoria()" id="categoriaForm">
+        <div class="form-group">
+            <label for="nombre">Nombre de la categoría:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <span class="error-message" id="categoria-nombre-error"></span>
+        </div>
+        <div class="form-actions">
+    <button type="submit" class="btn-form-primary">Crear Categoría</button>
+    <a href="/categorias" class="btn-form-secondary" style="text-decoration: none;">Cancelar</a>
+</div>
+    </form>
+</div>
 
             <div class="categorias-list">
                 <h3>Categorías Existentes</h3>
@@ -50,7 +53,7 @@
     <p>ID: {{.ID}}</p>
 
     <div class="categoria-actions">
-        <a href="/productos?categoria={{.ID}}" class="btn btn-info">Ver Productos</a>
+        <a href="/productos?categoria={{.ID}}" class="btn btn-info">Ver</a>
         <a href="/categorias/editar/{{.ID}}" class="btn btn-warning">Editar</a>
         <a href="/categorias/borrar/{{.ID}}" class="btn btn-danger">Eliminar</a>
     </div>

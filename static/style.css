@@ -497,13 +497,79 @@ body {
 .form-container {
     animation: fadeIn 0.5s ease-out;
 }
-.categoria-actions a:not(.btn-danger) {
-    flex: 1;
-    min-width: 90px;
-    text-align: center;
+
+/* Tema oscuro opcional */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --light-bg: #111827;
+        --text-primary: #f9fafb;
+        --text-secondary: #d1d5db;
+        --border-color: #374151;
+    }
+
+    body {
+        background-color: var(--dark-bg);
+    }
+
+    .navbar,
+    .producto-card,
+    .detalle-producto,
+    .form-container,
+    .categoria-card {
+        background-color: #1f2937;
+        border-color: var(--border-color);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        background-color: #374151;
+        border-color: #4b5563;
+        color: var(--text-primary);
+    }
+
+    .filter-section select {
+        background-color: #374151;
+        border-color: #4b5563;
+        color: var(--text-primary);
+    }
+}primary {
+    background-color: var(--primary-color);
+    color: white;
 }
 
-.categoria-actions .btn-danger {
-    flex-basis: 100%;
-    margin-top: 0.5rem; /* Ajusta el espacio vertical */
+.btn-primary:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #4b5563;
+}
+
+/* Estilos para el botón de formulario principal */
+.btn-form-primary {
+    background-color: #007bff; /* Color azul */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Estilos para el botón de formulario secundario */
+.btn-form-secondary {
+    background-color: #6c757d; /* Color gris */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Categoría</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <main class="container">
+        <div class="categorias-section">
+            <div class="header-section">
+                <h2>Editar Categoría</h2>
+            </div>
+            <div class="form-container">
+                <h3>Editar Categoría</h3>
+                <form method="POST" action="/categorias/editar/{{.ID}}" id="categoriaForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre de la categoría:</label>
+                        <input type="text" id="nombre" name="nombre" value="{{.Nombre}}" required>
+                    </div>
+ <div class="form-actions">
+    <button type="submit" class="btn-form-primary">Editar Categoría</button>
+    <a href="/categorias" class="btn-form-secondary" style="text-decoration: none;">Cancelar</a>
+</div>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

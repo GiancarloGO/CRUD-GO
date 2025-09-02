@@ -18,7 +18,7 @@
             <ul class="nav-menu">
                 <li><a href="/productos">Productos</a></li>
                 <li><a href="/categorias">Categorías</a></li>
-                <li><a href="/producto/nuevo" class="btn-primary">Nuevo Producto</a></li>
+                <li><a href="/producto/nuevo">Nuevo Producto</a></li>
             </ul>
         </div>
     </nav>
@@ -41,22 +41,25 @@
             <div class="producto-card">
                 <img src="{{.ImagenURL}}" alt="{{.Nombre}}" class="producto-imagen">
                 <div class="producto-info">
-                    <h3>{{.Nombre}}</h3>
-                    <p class="descripcion">{{.Descripcion}}</p>
-                    <p class="precio">S/{{printf "%.2f" .Precio}}</p>
-                    <div class="producto-actions">
-                        <a href="/producto/{{.ID}}" class="btn btn-info">Ver</a>
-                        <a href="/producto/{{.ID}}/editar" class="btn btn-warning">Editar</a>
-                        <form method="POST" action="/producto/{{.ID}}/borrar" style="display: inline;" onsubmit="return confirmarEliminacion()">
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                        </form>
-                    </div>
-                </div>
+    <h3>{{.Nombre}}</h3>
+    <p class="descripcion">{{.Descripcion}}</p>
+    <p class="precio">S/{{printf "%.2f" .Precio}}</p>
+    <div class="producto-actions">
+        <a href="/producto/{{.ID}}" class="btn btn-info">Ver</a>
+        <a href="/producto/{{.ID}}/editar" class="btn btn-warning">Editar</a>
+        <form method="POST" action="/producto/{{.ID}}/borrar"
+              onsubmit="return confirmarEliminacion()" class="form-eliminar">
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+    </div>
+</div>
+
+
             </div>
             {{else}}
             <div class="no-products">
                 <p>No hay productos disponibles.</p>
-                <a href="/producto/nuevo" class="btn btn-primary">Agregar primer producto</a>
+                <li><a href="/producto/nuevo">Nuevo Producto</a></li>
             </div>
             {{end}}
         </div>
