@@ -29,23 +29,40 @@ Este proyecto implementa un sistema completo de gestión de productos y categor�
 
 ```
 productos-crud/
-├── main.go                          # Punto de entrada y rutas
-├── go.mod                          # Configuración del módulo
-├── controllers/                    # Controladores (lógica de negocio)
-│   ├── producto_controller.go     # Controlador de productos
-│   └── categoria_controller.go    # Controlador de categorías
-├── models/                         # Modelos (datos)
-│   ├── producto.go               # Modelo de producto
-│   └── categoria.go              # Modelo de categoría
-├── views/                          # Templates HTML
-│   ├── productos.html
-│   ├── detalle_producto.html
-│   ├── form_producto.html
-│   └── categorias.html
-├── static/                         # Archivos estáticos
-│   ├── style.css
-│   └── script.js
-└── README.md
+├── main.go                       # Punto de entrada de la aplicación y definición de rutas.
+├── go.mod                        # Archivo de configuración que gestiona las dependencias del módulo Go.
+├── go.sum                        # Archivo de verificación de sumas de control para las dependencias.
+├── README.md                     # Documentación del proyecto (descripción, instrucciones de uso, etc.).
+|
+├── controllers/                  # Contiene la lógica de negocio y maneja las peticiones HTTP.
+│   ├── categoria_controller.go   # Maneja las operaciones CRUD (Crear, Leer, Actualizar, Borrar) para las categorías.
+│   └── producto_controller.go    # Maneja las operaciones CRUD para los productos.
+|
+├── models/                       # Define las estructuras de datos (modelos) que representan las tablas de la base de datos.
+│   ├── categoria.go              # Modelo para la entidad `Categoria`.
+│   └── producto.go               # Modelo para la entidad `Producto`.
+|
+├── database/                     # Contiene los archivos relacionados con la conexión y la configuración de la base de datos.
+│   └── db.go                     # Lógica para establecer y gestionar la conexión a la base de datos.
+|
+├── static/                       # Contiene los archivos estáticos que se sirven directamente al navegador.
+│   ├── images/                   # Directorio para imágenes del sitio web.
+│   │   └── master_color_logo.jpg # Un archivo de imagen de ejemplo.
+│   ├── uploads/                  # Directorio para archivos subidos por los usuarios.
+│   ├── script.js                 # Scripts de JavaScript para funcionalidades del lado del cliente.
+│   └── style.css                 # Hojas de estilo CSS para el diseño de la interfaz.
+|
+├── utils/                        # Contiene funciones de utilidad que pueden ser usadas en múltiples partes de la aplicación.
+│   └── upload.go                 # Lógica para manejar la subida de archivos (por ejemplo, imágenes de productos).
+|
+└── views/                        # Almacena los templates HTML que se renderizan para mostrar la interfaz al usuario.
+    ├── categorias.html           # Vista para mostrar la lista de categorías.
+    ├── detalle_producto.html     # Vista para mostrar los detalles de un producto específico.
+    ├── editar_categoria.html     # Vista con un formulario para editar una categoría existente.
+    ├── form_producto.html        # Vista con un formulario para crear un nuevo producto.
+    ├── layout.html               # Plantilla base (layout) que define la estructura principal de las páginas.
+    └── productos.html            # Vista para mostrar la lista de todos los productos.
+
 
 ## Modelos de Datos
 
